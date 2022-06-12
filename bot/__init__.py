@@ -27,7 +27,7 @@ def get_file_name(message):
 
 op = [Button.url('HELO SIR', 'https://t.me/LEGENDX22')]
 
-@client.on(events.NewMessage)
+@client.on(events.NewMessage(incoming=True))
 async def download(event):
     if (pv := event.is_private) or event.is_group :
         if event.sender_id in w.keys():
@@ -42,7 +42,8 @@ async def download(event):
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                 await client.send_message(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=op)
+                  msg = f'SENDER USERNAME: {event.sender.username} AND SENDER user id: {event.sender.id}'
+  await client.send_message("JHHJJJ", msg, link_preview=False, buttons=op)
                 return
             if event.file :
                 if not pv :
