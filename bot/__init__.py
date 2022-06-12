@@ -3,13 +3,11 @@ from telethon.sync import TelegramClient
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import filters
 from pyrogram.types import ReplyKeyboardMarkup
+from pyrogram import Client
+from pyrogram.types import Message
 from telethon.sessions import StringSession
-from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 import asyncio
-from pyrogram.types import Message
 import threading
 import re
 from urllib.parse import quote
@@ -32,11 +30,6 @@ def get_file_name(message):
     ext = message.file.ext or ""
     return f"file{ext}"
 
-button1 = InlineKeyboardButton(text="👋 button1", callback_data="randomvalue_of10")
-button2 = InlineKeyboardButton(text="💋 button2", callback_data="randomvalue_of100")
-keyboard_inline = InlineKeyboardMarkup().add(button1, button2)
-
-keyboard1 = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add("👋 Hello!", "💋 Youtube")
 
 
 @client.on(events.NewMessage)
@@ -54,7 +47,12 @@ async def download(event):
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                await event.reply("⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7")
+                await event.reply("⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",reply_markup=InlineKeyboardMarkup(
+                            [
+                            [InlineKeyboardButton("💠عضویت در کانال💠", url=f"https://t.me/{Config.CHANNEL_USERNAME}")]
+                        ]
+                    ),
+)
                 return
             if event.file :
                 if not pv :
