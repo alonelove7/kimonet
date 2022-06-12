@@ -1,10 +1,6 @@
 from telethon import events,functions,errors
 from telethon.sync import TelegramClient
-from telethon import Button, events 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram import filters
-from pyrogram.types import ReplyKeyboardMarkup
-from pyrogram import Client
+from telethon import Button 
 from pyrogram.types import Message
 from telethon.sessions import StringSession
 from config import Config
@@ -33,7 +29,7 @@ def get_file_name(message):
 
 
 
-@client.on(events.NewMessage)
+@client.on(events.NewMessage(pattern="/options"))
 async def download(event):
               keyboard = [
         [  
