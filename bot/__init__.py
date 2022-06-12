@@ -25,8 +25,18 @@ def get_file_name(message):
     ext = message.file.ext or ""
     return f"file{ext}"
 
-join = [Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')]
-start = [Button.url('Donate', 'https://www.payping.ir/d/WiZG')]
+join = 
+[
+            Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')
+]
+start = [
+[Button.text('قوانین', resize=True, single_use=True),Button.text('راهنما', resize=True, single_use=True)],
+[Button.text('حمایت', resize=True, single_use=True),Button.text('درباره', resize=True, single_use=True)]
+]
+link = 
+[
+            Button.url('دانلود', f'https://t.me/{Config.DOMAIN}/{id}'),Button.url('حمایت', 'https://www.payping.ir/d/WiZG')
+]
 @client.on(events.NewMessage(incoming=True))
 async def download(event):
     if (pv := event.is_private) or event.is_group :
@@ -57,7 +67,7 @@ async def download(event):
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
-                await event.reply(f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n🌐 Link : {Config.DOMAIN}/{id}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n‼️فایل های ارسالی بعد از 30 روز از روی سرور ها پاک مشوند‼️\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
+                await client.send_message(event.chat_id,f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n◾️Name: {get_file_name(msg)}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=link,link_preview=False)
                 return
         
             elif id_msg := re.search("/start (.*)", event.raw_text ):
@@ -94,7 +104,7 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                   await client.send_message(event.chat_id,"JHHJJJ", buttons=start)
+                   await client.send_message(event.chat_id,f"🌀خوش آمدید\n🔰برای استفاده از ربات کافی است\nفایل خود را ارسال کرده و سپس لینک آن را دریافت کنید\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=start)
 
                 #else :
                     #await event.delete()
