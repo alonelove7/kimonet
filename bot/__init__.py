@@ -29,9 +29,8 @@ join =
 [
             Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')
 ]
-start = [
-[Button.text('قوانین', resize=True, single_use=True),Button.text('راهنما', resize=True, single_use=True)],
-[Button.text('حمایت', resize=True, single_use=True),Button.text('درباره', resize=True, single_use=True)]
+start =[
+            Button.url('donate', 'https://t.me/')
 ]
 link = 
 [
