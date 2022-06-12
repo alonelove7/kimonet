@@ -53,7 +53,7 @@ async def download(event):
                 msg = await event.client.send_file(
                     Config.CHANNEL,
                     file=event.message.media,
-                                       caption=f"🔆یک فایل جدید ارسال شد\n\n🔸User ID : [{event.chat_id}](tg://user?id={event.sender_id})\n\n{Config.DOMAIN}/{id}\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+                                       caption=f"🔆یک فایل جدید ارسال شد\n\n🔸User ID : [{event.chat_id}](tg://user?id={event.sender_id})\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('👤User', f'https://t.me/{sender.username}'),Button.url('Bot🔰', f't.me/{username_bot}')]
 ])
                 id_hex = hex(msg.id)[2:]
@@ -98,8 +98,10 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                   await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=start)
-
+                   await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
+    Button.text('💥', resize=True, single_use=True)
+])
+client.send_message('💥', 'Thanks for the Telethon library!')
                 #else :
                     #await event.delete()
                 
