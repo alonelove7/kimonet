@@ -94,7 +94,7 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                   await client.send_message(event.chat_id,"JHHJJJ", buttons=op)
+                   await client.send_message(event.chat_id,"JHHJJJ", buttons=start)
 
                 #else :
                     #await event.delete()
