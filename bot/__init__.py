@@ -26,7 +26,13 @@ def get_file_name(message):
     return f"file{ext}"
 
 join = [Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')]
-start = [Button.url('donate', 'https://t.me/')]
+start=[
+         [Button.text('💠پشتیبانی', resize=True, single_use=True),Button.text('حمایت💰', resize=True, single_use=True)],
+         [Button.text('📜راهنما', resize=True, single_use=True),Button.text('درباره ما❓', resize=True, single_use=True)]
+]
+back= [
+            Button.text('↩️برگشت', resize=True, single_use=True)
+]
 @client.on(events.NewMessage(incoming=True))
 async def download(event):
     if (pv := event.is_private) or event.is_group :
@@ -105,7 +111,9 @@ async def download(event):
                 #else :
                     #await event.delete()
         if event.raw_text == "📜راهنما":
-            await event.reply(f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
+             await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=back)
+ if event.raw_text == "↩️برگشت":
+             await client.send_message(event.chat_id,f"🔺به منوی اصلی برگشتید\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=start)
             
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
