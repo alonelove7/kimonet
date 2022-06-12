@@ -57,8 +57,7 @@ async def download(event):
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
-                await client.send_message(event.chat_id,f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n💰لینک دونیت (تامین هزینه های سرور) \n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n‼️فایل های ارسالی بعد از 30 روز از روی سرور ها پاک مشوند‼️\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
-    [Button.inline('Left'), Button.inline('Right')],
+                await client.send_message(event.chat_id,f"♻️فایل شما با موفقیت به لینک تبدیل شد\n\n💢File Name: {get_file_name(msg)}\n\nℹ️File ID: {id}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('دانلود', f'{Config.DOMAIN}/{id}'),Button.url('حمایت', 'https://www.payping.ir/d/WiZG')]
 ])
                 return
@@ -97,7 +96,7 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                   await client.send_message(event.chat_id,f"🌀خوش آمدید\n🔰برای استفاده از ربات کافی است\nفایل خود را ارسال کرده و سپس لینک آن را دریافت کنید\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=start)
+                   await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=start)
 
                 #else :
                     #await event.delete()
