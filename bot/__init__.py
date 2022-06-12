@@ -101,11 +101,8 @@ async def download(event):
                    await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
     Button.text('💥', resize=True, single_use=True)
 ])
-client.send_message('💥', 'Thanks for the Telethon library!')
                 #else :
                     #await event.delete()
-                
-            
         
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
