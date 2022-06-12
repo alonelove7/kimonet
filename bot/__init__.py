@@ -99,7 +99,8 @@ async def download(event):
             if pv:
                 #if event.raw_text == "/start":
                    await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
-    Button.text('💥', resize=True, single_use=True)
+         [Button.text('💠پشتیبانی', resize=True, single_use=True),Button.text('حمایت💰', resize=True, single_use=True)],
+         [Button.text('📜راهنما', resize=True, single_use=True),Button.text('درباره ما❓', resize=True, single_use=True)]
 ])
                 #else :
                     #await event.delete()
