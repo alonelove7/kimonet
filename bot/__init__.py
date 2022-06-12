@@ -25,17 +25,9 @@ def get_file_name(message):
     ext = message.file.ext or ""
     return f"file{ext}"
 
-join = 
-[
-            Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')
-]
-start =[
-            Button.url('donate', 'https://t.me/')
-]
-link = 
-[
-            Button.url('دانلود', f'https://t.me/{Config.DOMAIN}/{id}'),Button.url('حمایت', 'https://www.payping.ir/d/WiZG')
-]
+join = [Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')]
+start = [Button.url('donate', 'https://t.me/')]
+link = [Button.url('دانلود', f'{Config.DOMAIN}/{id}'),Button.url('حمایت', 'https://www.payping.ir/d/WiZG')]
 @client.on(events.NewMessage(incoming=True))
 async def download(event):
     if (pv := event.is_private) or event.is_group :
@@ -66,7 +58,7 @@ async def download(event):
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
-                await client.send_message(event.chat_id,f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n◾️Name: {get_file_name(msg)}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=link,link_preview=False)
+                await client.send_message(event.chat_id,f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n◾️Name: \n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=link,link_preview=False)
                 return
         
             elif id_msg := re.search("/start (.*)", event.raw_text ):
