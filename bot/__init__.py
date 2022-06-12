@@ -26,9 +26,8 @@ def get_file_name(message):
     return f"file{ext}"
 
 op = [Button.url('HELO SIR', 'https://t.me/LEGENDX22')]
-
 @client.on(events.NewMessage(incoming=True))
-async def download(event):
+async def start(event):
     if (pv := event.is_private) or event.is_group :
         if event.sender_id in w.keys():
             if w[event.sender_id] > time.time() - 1 :
@@ -41,10 +40,10 @@ async def download(event):
                     channel = Config.CHANNEL_USERNAME,
                     participant = event.sender_id
                     ))
-            except errors.UserNotParticipantError:
+                except errors.UserNotParticipantError:
                     await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{Config.CHANNEL_USERNAME}\n\nAfter that /start the bot aging.")
+                    return
 
-                return
             if event.file :
                 if not pv :
                     if not event.file.size > 10_000_000:
@@ -94,8 +93,7 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                                      msg = f'SENDER USERNAME: {event.sender.username} AND SENDER user id: {event.sender.id}'
-  await client.send_message("JHHJJJ", msg, link_preview=False, buttons=op)
+                   await client.send_message(event.chat_id,"JHHJJJ", buttons=op)
 
                 #else :
                     #await event.delete()
