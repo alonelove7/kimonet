@@ -97,7 +97,7 @@ async def download(event):
                     return await event.reply("404! فایل یافت نشد")
             
             if pv:
-                #if event.raw_text == "/start":
+                if event.raw_text == "/start":
                    await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
          [Button.text('💠پشتیبانی', resize=True, single_use=True),Button.text('حمایت💰', resize=True, single_use=True)],
          [Button.text('📜راهنما', resize=True, single_use=True),Button.text('درباره ما❓', resize=True, single_use=True)]
@@ -105,7 +105,7 @@ async def download(event):
                 #else :
                     #await event.delete()
         if event.raw_text == "📜راهنما":
-            await event.reply(f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنیدn\⇇قبل از دانلود VPN را خاموش کنیدn\⇇لینک های ربات نیم بها میباشدn\⇇انقضای فایل ها 30 روز استn\n\n\🆔 @{Config.CHANNEL_USERNAME}")
+            await event.reply(f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
             
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
