@@ -1,7 +1,5 @@
-from telethon import events,functions,errors
+from telethon import events,functions,errors,Button
 from telethon.sync import TelegramClient
-from telethon import Button 
-from pyrogram.types import Message
 from telethon.sessions import StringSession
 from config import Config
 import asyncio
@@ -27,16 +25,10 @@ def get_file_name(message):
     ext = message.file.ext or ""
     return f"file{ext}"
 
-
+op = [Button.url('HELO SIR', 'https://t.me/LEGENDX22')]
 
 @client.on(events.NewMessage)
 async def download(event):
-keyboard = [
-        [Button.inline("First option", b"1"),Button.inline("Second option", b"2")],
-        [Button.inline("Fifth option", b"5")]
-    ]
-  
-           
     if (pv := event.is_private) or event.is_group :
         if event.sender_id in w.keys():
             if w[event.sender_id] > time.time() - 1 :
@@ -50,7 +42,7 @@ keyboard = [
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                await event.reply(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=keyboard)
+                 await client.send_message(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=op)
                 return
             if event.file :
                 if not pv :
