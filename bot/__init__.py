@@ -36,17 +36,16 @@ async def start(event):
         w[event.sender_id] = time.time()
         if pv:
             try:
-                    user = await event.client(functions.channels.GetParticipantRequest(
+                await event.client(functions.channels.GetParticipantRequest(
                     channel = Config.CHANNEL_USERNAME,
                     participant = event.sender_id
                     ))
-                except errors.UserNotParticipantError:
-                    await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{Config.CHANNEL_USERNAME}\n\nAfter that /start the bot aging.")
-                    return
-
-            if event.file :
-                if not pv :
-                    if not event.file.size > 10_000_000:
+            except errors.UserNotParticipantError:
+                await event.reply(f"🌀برای استفاده از ربات ابتدا باید در کانال ما عضو بشی\n💠برای عضویت روی ایدی زیر کلیک کن سپس دستور /start رو ارسال کن\n\n🔸@{Config.CHANNEL_USERNAME}")
+                return
+        if event.file :
+            if not pv :
+                if not event.file.size > 10_000_000:
                         return 
                 sender = await event.get_sender()
                 msg = await event.client.send_file(
