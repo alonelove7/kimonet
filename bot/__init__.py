@@ -25,9 +25,10 @@ def get_file_name(message):
     ext = message.file.ext or ""
     return f"file{ext}"
 
-op = [Button.url('HELO SIR', 'https://t.me/LEGENDX22')]
+join = [Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')]
+start = [Button.url('Donate', 'https://www.payping.ir/d/WiZG')]
 @client.on(events.NewMessage(incoming=True))
-async def start(event):
+async def download(event):
     if (pv := event.is_private) or event.is_group :
         if event.sender_id in w.keys():
             if w[event.sender_id] > time.time() - 1 :
@@ -36,16 +37,17 @@ async def start(event):
         w[event.sender_id] = time.time()
         if pv:
             try:
-                await event.client(functions.channels.GetParticipantRequest(
+                    user = await event.client(functions.channels.GetParticipantRequest(
                     channel = Config.CHANNEL_USERNAME,
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                await event.reply(f"🌀برای استفاده از ربات ابتدا باید در کانال ما عضو بشی\n💠برای عضویت روی ایدی زیر کلیک کن سپس دستور /start رو ارسال کن\n\n🔸@{Config.CHANNEL_USERNAME}")
-                return
-        if event.file :
-            if not pv :
-                if not event.file.size > 10_000_000:
+                    await client.send_message(event.chat_id,"📛 برای حمایت از ما و همچنان ربات ابتدا در کانال ما عضو شوید.\n\n✅ پس از عضویت وارد ربات شده و دستور /start را ارسال کنید.", buttons=join)
+                    return
+
+            if event.file :
+                if not pv :
+                    if not event.file.size > 10_000_000:
                         return 
                 sender = await event.get_sender()
                 msg = await event.client.send_file(
@@ -55,7 +57,7 @@ async def start(event):
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
-                await event.reply(f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n🌐 Link : {Config.DOMAIN}/{id}\n\n💰لینک دونیت (تامین هزینه های سرور) \nhttps://www.payping.ir/d/WiZG\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n‼️فایل های ارسالی بعد از 30 روز از روی سرور ها پاک مشوند‼️\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
+                await event.reply(f"✅فایل شما با موفقیت به لینک تبدیل شد\n\n🌐 Link : {Config.DOMAIN}/{id}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n‼️فایل های ارسالی بعد از 30 روز از روی سرور ها پاک مشوند‼️\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
                 return
         
             elif id_msg := re.search("/start (.*)", event.raw_text ):
