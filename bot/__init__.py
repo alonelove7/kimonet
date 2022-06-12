@@ -42,8 +42,8 @@ async def download(event):
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                  msg = f'SENDER USERNAME: {event.sender.username} AND SENDER user id: {event.sender.id}'
-  await client.send_message("JHHJJJ", msg, link_preview=False, buttons=op)
+                    await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{Config.CHANNEL_USERNAME}\n\nAfter that /start the bot aging.")
+
                 return
             if event.file :
                 if not pv :
@@ -94,7 +94,9 @@ async def download(event):
             
             if pv:
                 #if event.raw_text == "/start":
-                    await event.reply("🌀خوش آمدید\n🔰برای استفاده از ربات کافی است\nفایل خود را ارسال کرده و سپس لینک آن را دریافت کنید")
+                                      msg = f'SENDER USERNAME: {event.sender.username} AND SENDER user id: {event.sender.id}'
+  await client.send_message("JHHJJJ", msg, link_preview=False, buttons=op)
+
                 #else :
                     #await event.delete()
                 
