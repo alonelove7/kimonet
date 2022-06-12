@@ -29,20 +29,11 @@ def get_file_name(message):
 
 
 
-@client.on(events.NewMessage(pattern="/options"))
+@client.on(events.NewMessage)
 async def download(event):
-              keyboard = [
-        [  
-            Button.inline("First option", b"1"), 
-            Button.inline("Second option", b"2")
-        ],
-        [
-            Button.inline("Third option", b"3"), 
-            Button.inline("Fourth option", b"4")
-        ],
-        [
-            Button.inline("Fifth option", b"5")
-        ]
+keyboard = [
+        [Button.inline("First option", b"1"),Button.inline("Second option", b"2")],
+        [Button.inline("Fifth option", b"5")]
     ]
   
            
@@ -59,7 +50,7 @@ async def download(event):
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                await client.send_message(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=keyboard)
+                await event.reply(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=keyboard)
                 return
             if event.file :
                 if not pv :
