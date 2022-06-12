@@ -1,5 +1,6 @@
 from telethon import events,functions,errors
 from telethon.sync import TelegramClient
+from telethon import Button, events 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import filters
 from pyrogram.types import ReplyKeyboardMarkup
@@ -34,6 +35,21 @@ def get_file_name(message):
 
 @client.on(events.NewMessage)
 async def download(event):
+              keyboard = [
+        [  
+            Button.inline("First option", b"1"), 
+            Button.inline("Second option", b"2")
+        ],
+        [
+            Button.inline("Third option", b"3"), 
+            Button.inline("Fourth option", b"4")
+        ],
+        [
+            Button.inline("Fifth option", b"5")
+        ]
+    ]
+  
+           
     if (pv := event.is_private) or event.is_group :
         if event.sender_id in w.keys():
             if w[event.sender_id] > time.time() - 1 :
@@ -47,12 +63,7 @@ async def download(event):
                     participant = event.sender_id
                     ))
             except errors.UserNotParticipantError:
-                await event.reply("⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",reply_markup=InlineKeyboardMarkup(
-                            [
-                            [InlineKeyboardButton("💠عضویت در کانال💠", url=f"https://t.me/{Config.CHANNEL_USERNAME}")]
-                        ]
-                    ),
-)
+                await client.send_message(event.chat_id,"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @King_Network7",buttons=keyboard)
                 return
             if event.file :
                 if not pv :
