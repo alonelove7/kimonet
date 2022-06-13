@@ -101,20 +101,27 @@ async def download(event):
          [Button.text('پشتیبانی💠', resize=True, single_use=True),Button.text('💰حمایت', resize=True, single_use=True)],
          [Button.text('راهنما📜', resize=True, single_use=True),Button.text('❓درباره ما', resize=True, single_use=True)]
 ])
-                #else :
-                    #await event.delete()
+                else :
+                    await event.delete()
         if event.raw_text == "راهنما📜":
              await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
- if event.raw_text == "❓درباره ما":
+
+                        if event.raw_text == "❓درباره ما":
              await client.send_message(event.chat_id,f"👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
- if event.raw_text == "💰حمایت":
+                else :
+                    await event.delete()
+            if event.raw_text == "💰حمایت":
              await client.send_message(event.chat_id,f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('🔥لینک دونیت🔥', 'https://payping.ir/d/WiZG')]
 ])
- if event.raw_text == "پشتیبانی💠":
+                 else :
+                    await event.delete()
+if event.raw_text == "پشتیبانی💠":
              await client.send_message(event.chat_id,f"📞برای گزارش مشکل، انتقاد، پیشنهاد و... با آیدی زیر در ارتباط باشید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('💡تماس با ما💡', 'https://t.me/KN7_A')]
 ])
+                                        else :
+                    await event.delete()
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
                 if event.reply_to:
