@@ -58,9 +58,9 @@ async def download(event):
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
-                await client.send_message(event.chat_id,f"♻️فایل شما با موفقیت به لینک تبدیل شد\n\n💢File Name: {get_file_name(msg)}\n\nℹ️File ID: {id_hex}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+                await client.send_message(event.chat_id,f"♻️فایل شما با موفقیت به لینک تبدیل شد\n\n💢File Name: {get_file_name(msg)}\n\nℹ️File ID: {id_hex}\n\n☣️File Link: `{Config.DOMAIN}/{id}`\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('دانلود🌐', f'{Config.DOMAIN}/{id}'),Button.url('⚡️دونیت', 'https://www.payping.ir/d/WiZG')]
-])
+],parse_mode='md')
                 return
         
             elif id_msg := re.search("/start (.*)", event.raw_text ):
