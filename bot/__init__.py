@@ -50,9 +50,9 @@ async def download(event):
                         return 
                 sender = await event.get_sender()
                 msg = await event.client.send_file(
-                id_hex = hex(msg.id)[2:]
-                id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 Config.CHANNEL,
+                id_hex = hex(msg.id)[2:],
+                id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}",
                 file=event.message.media,
                                 caption=f"🔆یک فایل جدید ارسال شد\n\n🔸User ID : [{event.chat_id}](tg://user?id={event.sender_id})\n\n{Config.DOMAIN}/{id}\n\n{🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('👤User', f'https://t.me/{sender.username}'),Button.url('Bot🔰', f't.me/{username_bot}')]
