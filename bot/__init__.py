@@ -119,6 +119,8 @@ async def download(event):
                             if await event.client.send_message(entity=user_id, message=event.message, reply_to=msg_id):
                                 await event.client.edit_message(event.chat_id,event.id,f"{event.message.message}\n sended")
                             
-                        
+
+                                    event.raw_text == "❓درباره ما":
+                                                await client.send_message(event.chat_id,f"👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
                     
 client.run_until_disconnected()
