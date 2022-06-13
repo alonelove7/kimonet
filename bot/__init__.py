@@ -101,11 +101,12 @@ async def download(event):
                                     [Button.text('پشتیبانی💠', resize=True),Button.text('💰حمایت', resize=True)],
                                     [Button.text('راهنما📜', resize=True),Button.text('❓درباره ما', resize=True)]
                         ])
-                #else :
-                    #await event.delete()
+                else :
+                    await event.delete()
                 if event.raw_text == "❓درباره ما":
                     await event.reply(f"👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
-            
+                            else :
+                    await event.delete()
                             if event.raw_text == "💰حمایت":
                     await event.reply(f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}")
             
