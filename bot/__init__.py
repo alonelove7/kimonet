@@ -98,14 +98,20 @@ async def download(event):
             if pv:
                 if event.raw_text == "/start":
                         await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
-                                    [Button.text('پشتیبانی💠', resize=True, single_use=True),Button.text('💰حمایت', resize=True, single_use=True)],
-                                    [Button.text('راهنما📜', resize=True, single_use=True),Button.text('❓درباره ما', resize=True, single_use=True)]
+                                    [Button.text('پشتیبانی💠', resize=True),Button.text('💰حمایت', resize=True)],
+                                    [Button.text('راهنما📜', resize=True),Button.text('❓درباره ما', resize=True)]
                         ])
                 #else :
                     #await event.delete()
                 if event.raw_text == "❓درباره ما":
-                    await event.reply("👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
-                        
+                    await event.reply("👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
+            
+                            if event.raw_text == "💰حمایت":
+                    await event.reply("‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+                        [Button.url('🔥لینک دونیت🔥', 'https://payping.ir/d/WiZG')]
+            ])
+            
+            
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
                 if event.reply_to:
