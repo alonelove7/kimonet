@@ -104,10 +104,8 @@ async def download(event):
                 #else :
                     #await event.delete()
                 
-               if event.raw_text == "راهنما📜":
-                                    await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
-                #else :
-                    #await event.delete()
+if event.raw_text == "راهنما📜":
+                        await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
 
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
