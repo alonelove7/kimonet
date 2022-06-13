@@ -127,7 +127,7 @@ async def help_handler(event):
 @client.on(events.NewMessage(incoming=True))
 async def donate_handler(event):
             if event.raw_text == "💰حمایت":
-                        await client.send_message(event.chat_id,f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",,buttons=[
+                        await client.send_message(event.chat_id,f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
                                     [Button.url('🔥لینک دونیت🔥', 'https://payping.ir/d/WiZG')]
                         ])
             
