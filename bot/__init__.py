@@ -121,7 +121,6 @@ async def download(event):
                         
 @client.on(events.NewMessage(incoming=True))
 async def help_handler(event):
-            if pv:
                         if event.raw_text == "راهنما📜":
                                     await event.reply(f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
                   
