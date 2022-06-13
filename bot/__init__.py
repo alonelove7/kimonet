@@ -26,13 +26,6 @@ def get_file_name(message):
     return f"file{ext}"
 
 join = [Button.url('💠عضویت در کانال💠', f'https://t.me/{Config.CHANNEL_USERNAME}')]
-start=[
-         [Button.text('💠پشتیبانی', resize=True, single_use=True),Button.text('حمایت💰', resize=True, single_use=True)],
-         [Button.text('📜راهنما', resize=True, single_use=True),Button.text('درباره ما❓', resize=True, single_use=True)]
-]
-back= [
-            Button.text('↩️برگشت', resize=True, single_use=True)
-]
 @client.on(events.NewMessage(incoming=True))
 async def download(event):
     if (pv := event.is_private) or event.is_group :
@@ -66,7 +59,7 @@ async def download(event):
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
                 await client.send_message(event.chat_id,f"♻️فایل شما با موفقیت به لینک تبدیل شد\n\n💢File Name: {get_file_name(msg)}\n\nℹ️File ID: {id_hex}\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
-    [Button.url('دانلود', f'{Config.DOMAIN}/{id}'),Button.url('حمایت', 'https://www.payping.ir/d/WiZG')]
+    [Button.url('دانلود🌐', f'{Config.DOMAIN}/{id}'),Button.url('⚡️دونیت', 'https://www.payping.ir/d/WiZG')]
 ])
                 return
         
@@ -105,16 +98,23 @@ async def download(event):
             if pv:
                 if event.raw_text == "/start":
                    await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
-         [Button.text('💠پشتیبانی', resize=True, single_use=True),Button.text('حمایت💰', resize=True, single_use=True)],
-         [Button.text('📜راهنما', resize=True, single_use=True),Button.text('درباره ما❓', resize=True, single_use=True)]
+         [Button.text('پشتیبانی💠', resize=True, single_use=True),Button.text('💰حمایت', resize=True, single_use=True)],
+         [Button.text('راهنما📜', resize=True, single_use=True),Button.text('❓درباره ما', resize=True, single_use=True)]
 ])
                 #else :
                     #await event.delete()
-        if event.raw_text == "📜راهنما":
-             await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=back)
- if event.raw_text == "↩️برگشت":
-             await client.send_message(event.chat_id,f"🔺به منوی اصلی برگشتید\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=start)
-            
+        if event.raw_text == "راهنما📜":
+             await client.send_message(event.chat_id,f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}")
+ if event.raw_text == "❓درباره ما":
+             await client.send_message(event.chat_id,f"👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
+ if event.raw_text == "💰حمایت":
+             await client.send_message(event.chat_id,f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+    [Button.url('🔥لینک دونیت🔥', 'https://payping.ir/d/WiZG')]
+])
+ if event.raw_text == "پشتیبانی💠":
+             await client.send_message(event.chat_id,f"📞برای گزارش مشکل، انتقاد، پیشنهاد و... با آیدی زیر در ارتباط باشید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+    [Button.url('💡تماس با ما💡', 'https://t.me/KN7_A')]
+])
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
                 if event.reply_to:
