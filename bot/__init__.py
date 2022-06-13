@@ -103,7 +103,8 @@ async def download(event):
                         ])
                 #else :
                     #await event.delete()
-                        
+                if event.raw_text == "❓درباره ما":
+                    await event.reply("👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
                         
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
