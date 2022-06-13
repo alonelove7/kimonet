@@ -95,15 +95,17 @@ async def download(event):
                 except:
                     return await event.reply("404! فایل یافت نشد")
             
-if pv:
-if event.raw_text == "/start":
-await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
-[Button.text('پشتیبانی💠', resize=True, single_use=True),Button.text('💰حمایت', resize=True, single_use=True)],
-[Button.text('راهنما📜', resize=True, single_use=True),Button.text('❓درباره ما', resize=True, single_use=True)]
-])
-#else :
-#await event.delete()
-
+            if pv:
+                if event.raw_text == "/start":
+                        await client.send_message(event.chat_id,f"⚡️خوش آمدید\n\n💥برای استفاده از ربات کافی است فایل خود را ارسال کرده و سپس لینک آن را دریافت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}", buttons=[
+                                    [Button.text('پشتیبانی💠', resize=True, single_use=True),Button.text('💰حمایت', resize=True, single_use=True)],
+                                    [Button.text('راهنما📜', resize=True, single_use=True),Button.text('❓درباره ما', resize=True, single_use=True)]
+                        ])
+                #else :
+                    #await event.delete()
+                
+            
+        
         elif event.is_channel:
             if event.chat_id == Config.CHANNEL:
                 if event.reply_to:
