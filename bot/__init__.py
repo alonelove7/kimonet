@@ -123,6 +123,19 @@ async def download(event):
 async def help_handler(event):
                         if event.raw_text == "راهنما📜":
                                     await event.reply(f"❗️راهنمای ربات\n\n⇇فایل مورد نظر خود ارسال یا فوروارد کنید\n⇇قبل از دانلود VPN را خاموش کنید\n⇇لینک های ربات نیم بها میباشد\n⇇انقضای فایل ها 30 روز است\n\n🆔 @{Config.CHANNEL_USERNAME}",link_preview=False)
-                  
+                                    
+@client.on(events.NewMessage(incoming=True))
+async def donate_handler(event):
+               if event.raw_text == "💰حمایت":
+            await client.send_message(event.chat_id,f"‼️برای ادامه فعالیت ربات و تامین بخشی از هزینه های سرور میتوانید از طریق لینک زیر از ربات و تیم حمایت کنید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+                        [Button.url('🔥لینک دونیت🔥', 'https://payping.ir/d/WiZG')]
+            ])
+            
+@client.on(events.NewMessage(incoming=True))
+async def support_handler(event):
+           if event.raw_text == "پشتیبانی💠":
+            await client.send_message(event.chat_id,f"📞برای گزارش مشکل، انتقاد، پیشنهاد و... با آیدی زیر در ارتباط باشید.\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+                        [Button.url('💡تماس با ما💡', 'https://t.me/KN7_A')]
+            ])
             
 client.run_until_disconnected()
