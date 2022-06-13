@@ -106,7 +106,7 @@ async def download(event):
                 
 
 
-                                   elif event.raw_text == "❓درباره ما":
+                                   if event.raw_text == "❓درباره ما":
                                     await client.send_message(event.chat_id,f"👤درباره ما\n\n↯طراحی: KingNetwork\n↯سرور: [Exclusive](https://t.me/King_network7)\n↯ورژن: 1.0.3\n↯لینک: نیم بها\n↯حمایت: [دونیت](https://www.payping.ir/d/WiZG)\n\n🆔 @{Config.CHANNEL_USERNAME}")
                     
 client.run_until_disconnected()
