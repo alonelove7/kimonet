@@ -50,17 +50,16 @@ async def download(event):
                         return 
                 sender = await event.get_sender()
                 msg = await event.client.send_file(
+                Config.CHANNEL,
+                file=event.message.media,
+                                 caption=f"🔆یک فایل جدید ارسال شد\n\n🔸User ID : [{event.chat_id}](tg://user?id={event.sender_id})\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
+    [Button.url('👤User', f'https://t.me/{sender.username}'),Button.url('Bot🔰', f't.me/{username_bot}')]
                 id_hex = hex(msg.id)[2:]
                 id = f"{id_hex}/@{Config.CHANNEL_USERNAME}-{get_file_name(msg)}"
                 bot_url = f"[share](t.me/{username_bot}?start={id_hex})"
                 await client.send_message(event.chat_id,f"♻️فایل شما با موفقیت به لینک تبدیل شد\n\n💢File Name: {get_file_name(msg)}\n\nℹ️File ID: {id_hex}\n\n☣️File Link: `{Config.DOMAIN}/{id}`\n\n⚠️لینک دانلود نیم بها میباشد، قبل از دانلود VPN خود را خاموش کنید!\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
     [Button.url('دانلود🌐', f'{Config.DOMAIN}/{id}'),Button.url('⚡️دونیت', 'https://www.payping.ir/d/WiZG')]
 ],parse_mode='md')
-            
-                    Config.CHANNEL,
-                    file=event.message.media,
-                                        caption=f"🔆یک فایل جدید ارسال شد\n\n🔸User ID : [{event.chat_id}](tg://user?id={event.sender_id})\n\n🆔 @{Config.CHANNEL_USERNAME}",buttons=[
-    [Button.url('👤User', f'https://t.me/{sender.username}'),Button.url('Bot🔰', f't.me/{username_bot}')]
 ])
                 return
         
